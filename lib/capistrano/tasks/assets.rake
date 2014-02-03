@@ -30,7 +30,7 @@ namespace :deploy do
     on roles(fetch(:assets_roles)) do
       within release_path do
         with rails_env: fetch(:rails_env) do
-          execute :rake, "assets:clean"
+          execute :bundler, 'rake', "assets:clean"
         end
       end
     end
@@ -56,7 +56,7 @@ namespace :deploy do
       on roles(fetch(:assets_roles)) do
         within release_path do
           with rails_env: fetch(:rails_env) do
-            execute :rake, "assets:precompile"
+            execute :bundler, 'rake', "assets:precompile"
           end
         end
       end
